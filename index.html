@@ -35,7 +35,7 @@
         .range([0, width]);
 
       var y = d3.scaleLinear()
-        .range([0,heigth]);
+        .range([0,height]);
 
       var data = d3.json("data/cars.json").then(function(data) {
         x.domain(data.map(function(d) { return d.origen; }));

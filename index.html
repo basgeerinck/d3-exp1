@@ -42,7 +42,7 @@
           .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      var xValue = function(d) { return d.Origen;}, // data -> value
+      var xValue = function(d) { return d.Origin;}, // data -> value
         xScale = d3.scaleBand().rangeRound([0, width]).paddingInner(0.05), // value -> display
         xMap = function(d) { return xScale(xValue(d));}, // data -> display
         xAxis = d3.axisBottom().scale(xScale);
@@ -51,6 +51,11 @@
           yScale = d3.scaleLinear().range([height, 0]), // value -> display
           yMap = function(d) { return yScale(yValue(d));}, // data -> display
           yAxis = d3.axisLeft().scale(yScale);
+
+
+    // setup fill color
+    var cValue = function(d) { return d.Origin;},
+        color = d3.scale.category10();
 
       var data = d3.json("data/cars.json").then(function(data) {
         xScale.domain(d3.map(data, function(d) {return d.Origin}));
@@ -76,7 +81,7 @@
           .attr("x", width)
           .attr("y", -6)
           .style("text-anchor", "end")
-          .text("Origen");
+          .text("Origin");
 
       // y-axis
       svg.append("g")

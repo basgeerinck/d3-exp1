@@ -43,7 +43,7 @@
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       var xValue = function(d) { return d.Origen;}, // data -> value
-        xScale = d3.scaleBand(), // value -> display
+        xScale = d3.scaleBand().rangeRound([0, width]).paddingInner(0.05), // value -> display
         xMap = function(d) { return xScale(xValue(d));}, // data -> display
         xAxis = d3.axisBottom().scale(xScale);
 
@@ -83,7 +83,7 @@
         .append("text")
           .attr("class", "label")
           .attr("transform", "rotate(-90)")
-          .attr("y", 16)
+          .attr("y", 26)
           .attr("dy", ".5em")
           .style("text-anchor", "end")
           .text("Cylinders");

@@ -40,7 +40,7 @@
         .attr("height", height)
 
       var xValue = function(d) { return d.Origen;}, // data -> value
-        xScale = d3.scaleOrdinal().range([0, width]), // value -> display
+        xScale = d3.scaleBand(), // value -> display
         xMap = function(d) { return xScale(xValue(d));}, // data -> display
         xAxis = d3.axisBottom().scale(xScale);
 
@@ -50,7 +50,7 @@
           yAxis = d3.axisLeft().scale(yScale);
 
       var data = d3.json("data/cars.json").then(function(data) {
-        xAxis.domain(data.map(function(d) { return d.Origen; }));
+        xAxis.domain(xMap);
         yAxis.domain([d3.min(data, function(d) { return d.Cylinders; }), d3.max(data, function(d) { return d.Cylinders; })]);
         console.log(data); // [{"Hello": "world"}, …]
       });

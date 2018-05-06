@@ -50,8 +50,8 @@
           yAxis = d3.axisLeft().scale(yScale);
 
       var data = d3.json("data/cars.json").then(function(data) {
-        xAxis.domain(xMap);
-        yAxis.domain([d3.min(data, function(d) { return d.Cylinders; }), d3.max(data, function(d) { return d.Cylinders; })]);
+        xScale.domain();
+        yScale.domain([d3.min(data, function(d) { return d.Cylinders; }), d3.max(data, function(d) { return d.Cylinders; })]);
         console.log(data); // [{"Hello": "world"}, …]
       });
 

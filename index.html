@@ -55,7 +55,7 @@
 
     // setup fill color
     var cValue = function(d) { return d.Origin;},
-        color = d3.scale.category10();
+        color =  d3.scaleOrdinal(d3.schemeAccent);
 
       var data = d3.json("data/cars.json").then(function(data) {
         xScale.domain(d3.map(data, function(d) {return d.Origin}));
